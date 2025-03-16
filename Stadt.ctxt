@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Stadt
+comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Stadt.\n\ \n\ @author\ (Ihr\ Name)\ \n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\n
+comment1.params=name
+comment1.target=Stadt(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getName()
+numComments=3

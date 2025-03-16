@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Graph
+comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Graph.\n\ \n\ @author\ (Ihr\ Name)\ \n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\n
+comment1.params=maxKnoten
+comment1.target=Graph(int)
+comment2.params=stadt
+comment2.target=boolean\ erstelleKnoten(Stadt)
+comment3.params=stadtname
+comment3.target=int\ nenneIndexVon(java.lang.String)
+comment4.params=von\ nach\ gewicht\ ungerichtet
+comment4.target=boolean\ erstelleKante(java.lang.String,\ java.lang.String,\ int,\ boolean)
+numComments=5
