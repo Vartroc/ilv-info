@@ -10,6 +10,31 @@ public class Graph {
     private int[][] kanten;
     private Knoten[] knoten;
     
+    public static void main(String[] args) {
+        Graph graph = new Graph(5);
+
+        Stadt stadt1 = new Stadt("Berlin");
+        Stadt stadt2 = new Stadt("München");
+        Stadt stadt3 = new Stadt("Hamburg");
+        Stadt stadt4 = new Stadt("Köln");
+        Stadt stadt5 = new Stadt("Frankfurt");
+
+        graph.erstelleKnoten(stadt1);
+        graph.erstelleKnoten(stadt2);
+        graph.erstelleKnoten(stadt3);
+        graph.erstelleKnoten(stadt4);
+        graph.erstelleKnoten(stadt5);
+
+        graph.erstelleKante("Berlin", "München", 1, false);
+        graph.erstelleKante("Berlin", "Hamburg", 1, false);
+        graph.erstelleKante("München", "Köln", 1, false);
+        graph.erstelleKante("Hamburg", "Frankfurt", 1, false);
+        graph.erstelleKante("Köln", "Frankfurt", 1, false);
+
+        graph.breitensuche("Berlin");
+
+    }
+    
     public Graph(int maxKnoten) {
         this.anzahl = 0; // Setzt die Anzahl der Knoten auf 0
         this.kanten = new int[maxKnoten][maxKnoten]; // Erstelle die Adjazenzmatrix
@@ -55,6 +80,58 @@ public class Graph {
             return true; // Erfolg
         }
         return false; // Misserfolg
+    }
+    
+    public void breitensuche(String stadtname){
+        int index  = nenneIndexVon(stadtname);
+        System.out.println(index);
+        if (index == -1){
+            System.out.println("Startknoten existiert nicht");
+        }else{
+            int[] warteschlange;
+            warteschlange = new int[anzahl];
+            for (int i = 0; i < warteschlange.length; i++){
+                warteschlange[i] = -1;
+            }
+            for (int i = 0; i < anzahl; i++) {
+                knoten[i].setBesucht(false);
+                knoten[i].setFertig(false);
+            }
+            
+            int vorne = 0;
+            int hinten = 0;
+            int abgelaufen = 0;
+            
+            warteschlange[0] = index;
+            hinten++;
+            
+            while (vorne < hinten){
+                
+                for (int i = 0; i < kanten[warteschlange[vorne]].length; i++){
+                    if (kanten[warteschlange[vorne]][i] != -1 && !knoten[i].getBesucht()){
+                        knoten[i].setBesucht(true);
+                        
+                        System.out.println(knoten[i].getInhalt().getName());
+                        System.out.println("Knoten " + knoten[i].getInhalt().getName() + " ist jetzt besucht");
+                        
+                        warteschlange[hinten] = i;
+                        hinten++;
+                        abgelaufen++;
+                    }
+                }
+                System.out.println("Ausgangsknoten " + knoten[warteschlange[vorne]].getInhalt().getName() + " fertig!");
+                vorne++;
+            }
+            
+            for (int i = 0; i < warteschlange.length; i++){
+                if (warteschlange[i] != -1){
+                    System.out.println(knoten[warteschlange[i]].getInhalt().getName());
+                }
+            }
+            
+            System.out.println("Abgelaufen: " + abgelaufen);
+        }
+        
     }
 }
 

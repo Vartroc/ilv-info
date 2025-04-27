@@ -25,11 +25,15 @@ public class Knoten
         this.besucht = besucht;
     }
     
-    public boolean istBesucht() {
+    public boolean getBesucht() {
         return besucht;
     }
     
     public void setFertig(boolean fertig) {
         this.fertig = fertig;
+    }
+    
+    public boolean getFertig(boolean fertig) {
+        return fertig;
     }
 }
